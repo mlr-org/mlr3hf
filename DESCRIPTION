@@ -25,6 +25,7 @@ Imports:
     jsonlite,
     fs,
     filelock,
+    nanoparquet,
     rappdirs,
     withr,
     glue,
