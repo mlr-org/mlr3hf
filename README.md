@@ -4,7 +4,7 @@
 # mlr3hf <img src="man/figures/logo.png" align="right" width = "120" />
 
 Package website: [release](https://mlr-org.github.io/mlr3hf/) \|
-[dev](https://mlr-org.github.io/mlr3hf/dev/)
+[dev](https://mlr-org.r-universe.dev/mlr3hf)
 
 Integration of [Hugging Face](https://huggingface.co) datasets with the
 [`mlr3`](https://mlr3.mlr-org.com/) ecosystem.
