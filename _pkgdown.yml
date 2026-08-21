@@ -1,4 +1,4 @@
-url: https://anjaninandan001.github.io/mlr3hf/
+url: https://mlr-org.github.io/mlr3hf/
 template:
   bootstrap: 5
 
@@ -27,7 +27,7 @@ navbar:
     github:
       icon: fa fa-github
       text: GitHub
-      href: https://www.github.com/anjaninandan001/mlr3hf
+      href: https://www.github.com/mlr-org/mlr3hf
     book:
       text: mlr3book
       icon: fa fa-link

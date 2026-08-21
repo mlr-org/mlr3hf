@@ -3,15 +3,15 @@
 
 # mlr3hf <img src="man/figures/logo.png" align="right" width = "120" />
 
-Package website: [release](writing/soon) \| [dev](writing/soon)
+Package website: [release](https://mlr-org.github.io/mlr3hf/) \|
+[dev](https://mlr-org.github.io/mlr3hf/dev/)
 
 Integration of [Hugging Face](https://huggingface.co) datasets with the
 [`mlr3`](https://mlr3.mlr-org.com/) ecosystem.
 
 <!-- badges: start -->
-
-[![R-CMD-check](https://github.com/anjaninandan001/mlr3hf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/anjaninandan001/mlr3hf/actions/workflows/R-CMD-check.yaml)
 [![runiverse](https://mlr-org.r-universe.dev/badges/mlr3hf)](https://mlr-org.r-universe.dev/mlr3hf)
+[![R-CMD-check](https://github.com/mlr-org/mlr3hf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mlr-org/mlr3hf/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## What is `mlr3hf`?
@@ -37,7 +37,7 @@ install.packages("mlr3hf")
 Install the development version from GitHub:
 
 ``` r
-pak::pak("anjaninandan001/mlr3hf")
+pak::pak("mlr-org/mlr3hf")
 ```
 
 ## Example
@@ -136,8 +136,8 @@ task
 
 ## Documentation
 
-The [package documentation](writing/soon) contains the complete
-documentation and examples for `mlr3hf`.
+The [package documentation](https://mlr-org.github.io/mlr3hf/) contains
+the complete documentation and examples for `mlr3hf`.
 
 For more information about the `mlr3` ecosystem, see the [`mlr3`
 book](https://mlr3book.mlr-org.com/).
@@ -159,15 +159,10 @@ complete list of extension packages.
 
 If you encounter problems using the package, find missing or misleading
 documentation, or want to suggest a feature, please open an issue in the
-[issue tracker](writing/soon).
+[issue tracker](https://github.com/mlr-org/mlr3hf/issues).
 
 Pull requests are welcome and will be included at the discretion of the
 maintainers.
 
 Please consult the [mlr3 wiki](https://github.com/mlr-org/mlr3/wiki/)
 for development and contribution guidelines.
-
-## License
-
-`mlr3hf` is licensed under the [MIT
-license](https://opensource.org/licenses/MIT).
