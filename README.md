@@ -10,7 +10,7 @@ Integration of [Hugging Face](https://huggingface.co) datasets with the
 [`mlr3`](https://mlr3.mlr-org.com/) ecosystem.
 
 <!-- badges: start -->
-
+[![runiverse](https://mlr-org.r-universe.dev/badges/mlr3hf)](https://mlr-org.r-universe.dev/mlr3hf)
 [![R-CMD-check](https://github.com/mlr-org/mlr3hf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/mlr-org/mlr3hf/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
