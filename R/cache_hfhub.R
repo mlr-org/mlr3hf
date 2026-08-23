@@ -88,6 +88,9 @@ cache_hfhub <- function(
                 "Distant resource does not seem to be on huggingface.co (missing commit header)."
             ))
         }
+        if (!grepl("^[0-9a-f]{40}$", commit_hash)) {
+            stop("Invalid commit hash retrieved from server: ", commit_hash)
+        }
         etag <- metadata$etag
         if (is.null(etag)) {
             cli::cli_abort(gettext(

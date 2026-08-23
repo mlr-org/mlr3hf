@@ -117,6 +117,9 @@ cache_parquet <- function(
         metadata <- get_file_metadata(url)
         etag <- metadata$etag
         commit_hash <- metadata$commit_hash
+        if (!grepl("^[0-9a-f]{40}$", commit_hash)) {
+            stop("Invalid commit hash retrieved from server: ", commit_hash)
+        }
         error_code <- metadata$error_code
 
         if (!is.null(error_code)) {
