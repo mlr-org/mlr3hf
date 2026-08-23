@@ -122,6 +122,10 @@ list_datasets <- function(
   }
 
   out <- rbindlist(all_data)
+  
+  if (nrow(out) > num_of_dataset) {
+    out <- out[seq_len(num_of_dataset)]
+  }
 
   if (isTRUE(fetch_meta) && nrow(out) > 0) {
     meta <- fetch_dataset_meta(out$id, max_concurrent = max_concurrent)
