@@ -74,6 +74,10 @@ cache_hfhub <- function(
             return(pointer_path)
         }
     }
+    url <- NULL
+    commit_hash <- NULL
+    etag <- NULL
+    expected_size <- NULL
     if (!local_files_only) {
         url <- hub_url(repo_id, file_name, revision = revision)
         metadata <- get_file_metadata(url)
