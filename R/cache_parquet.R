@@ -25,12 +25,10 @@
 #' @param ... Additional arguments, reserved for future use.
 #'
 #' @return A named \code{list} with one entry per cached split. Each
-#'   entry is itself a list containing:
-#'   \describe{
-#'     \item{split}{Character string giving the split name.}
-#'     \item{path}{Character string giving the local file path where
-#'       the cached Parquet file was saved.}
-#'   }
+#'   entry is a character vector of local file paths to the cached
+#'   Parquet shard(s) for that split (a single path if the split has
+#'   one shard, multiple paths if it was sharded across several
+#'   files).
 #'
 #' @details
 #' Files are downloaded from the
@@ -57,9 +55,9 @@
 #' @export
 cache_parquet <- function(
     repo_id,
-    revision = "refs%2Fconvert%2Fparquet",
     config,
     split = NULL,
+    revision = "refs%2Fconvert%2Fparquet",
     ...
 ) {
     cache_dir <- mlr3hf_cache_dir()
