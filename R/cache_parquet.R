@@ -81,14 +81,13 @@ cache_parquet <- function(
         dataset = as.character(data$parquet_files$dataset),
         config = as.character(data$parquet_files$config),
         split = as.character(data$parquet_files$split),
-        #url = as.character(data$parquet_files$url),
+        url = as.character(data$parquet_files$url),
         filename = as.character(data$parquet_files$filename),
         size = as.numeric(data$parquet_files$size),
         stringsAsFactors = FALSE
     )
 
     filtered_files <- parquet_files[parquet_files$config == config, ]
-    b_url <- mlr3hf_hub_url()
 
     if (nrow(filtered_files) == 0) {
         cli::cli_abort(
@@ -113,9 +112,7 @@ cache_parquet <- function(
         filename <- filtered_files$filename[i]
         expected_size <- filtered_files$size[i]
 
-        url <- glue::glue(
-            "{b_url}/datasets/{repo_id}/resolve/{revision}/{config}/{curr_split}/{filename}"
-        )
+        url <- filtered_files$url[i]
 
         metadata <- get_file_metadata(url)
         etag <- metadata$etag
