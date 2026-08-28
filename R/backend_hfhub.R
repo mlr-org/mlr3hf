@@ -5,7 +5,8 @@
 #' @return A data backend
 #' @noRd
 backend_hfhub <- function(path, primary_key = NULL, ...) {
-    ext <- tolower(tools::file_ext(path))
+    base_path <- sub("(?i)\\.gz$", "", path, perl = TRUE)
+    ext <- tolower(tools::file_ext(base_path))
 
     data <- switch(
         ext,

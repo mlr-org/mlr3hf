@@ -1,0 +1,43 @@
+http_interactions:
+- request:
+    method: HEAD
+    uri: https://huggingface.co/datasets/a4n9i/iris-tabular/resolve/main/small_test.csv.gz
+  response:
+    status: 302
+    headers:
+      content-type: text/plain; charset=utf-8
+      content-length: '1077'
+      location: https://us.aws.cdn.hf.co/xet-bridge-us/698df3c0ac54d3a59f0e3c6f/13f3904acb34b995f6e172c3d90c538461c093c1735aba72cd5ad0b4a653fd03?user_id=public&response-content-type=application%2Fgzip&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27small_test.csv.gz%3B+filename%3D%22small_test.csv.gz%22%3B&Expires=1787765330&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjk4ZGYzYzBhYzU0ZDNhNTlmMGUzYzZmLzEzZjM5MDRhY2IzNGI5OTVmNmUxNzJjM2Q5MGM1Mzg0NjFjMDkzYzE3MzVhYmE3MmNkNWFkMGI0YTY1M2ZkMDNcXD91c2VyX2lkPXB1YmxpYyZyZXNwb25zZS1jb250ZW50LXR5cGU9YXBwbGljYXRpb24lMkZnemlwJlgtWGV0LUNhcy1VaWQ9cHVibGljJnJlc3BvbnNlLWNvbnRlbnQtZGlzcG9zaXRpb249aW5saW5lJTNCK2ZpbGVuYW1lJTJBJTNEVVRGLTglMjclMjdzbWFsbF90ZXN0LmNzdi5neiUzQitmaWxlbmFtZSUzRCUyMnNtYWxsX3Rlc3QuY3N2Lmd6JTIyJTNCIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJFcG9jaFRpbWUiOjE3ODc3NjUzMzB9fX1dfQ__&Signature=MEQCIArjL3gbgBfVpDHn99hQg8aG2aNr0Wj3QmEHjP4gVF7VAiAj6ljCZjjoKG1VadHqTfwNZKuWNyq4p2URTFhAeW3KSQ__&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F
+      date: Wed, 26 Aug 2026 16:28:50 GMT
+      x-powered-by: huggingface-moon
+      x-request-id: Root=1-6a8f1442-32c1c7bf775f3cec2f76b4a4
+      ratelimit: '"resolvers";r=2999;t=298'
+      ratelimit-policy: '"fixed window";"resolvers";q=3000;w=300'
+      cross-origin-opener-policy: same-origin
+      referrer-policy: strict-origin-when-cross-origin
+      access-control-max-age: '86400'
+      access-control-allow-origin: https://huggingface.co
+      vary: Origin, Accept
+      access-control-expose-headers: X-Repo-Commit,X-Request-Id,X-Error-Code,X-Error-Message,X-Total-Count,ETag,Link,Accept-Ranges,Content-Range,X-Linked-Size,X-Linked-ETag,X-Xet-Hash
+      x-repo-commit: df96e8373b6e6a4162c6fa351c05b7a21fa126a6
+      accept-ranges: bytes
+      x-hf-warning: 'unauthenticated; Warning: You are sending unauthenticated requests
+        to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster
+        downloads.'
+      x-hub-cache: MISS
+      x-linked-size: '125'
+      x-linked-etag: '"cee0e44981707427258d43f37daef4dbc6bd7397efc0a2566617a1405acf51cb"'
+      cache-control: no-store
+      x-xet-hash: 13f3904acb34b995f6e172c3d90c538461c093c1735aba72cd5ad0b4a653fd03
+      link: <https://huggingface.co/api/datasets/a4n9i/iris-tabular/xet-read-token/df96e8373b6e6a4162c6fa351c05b7a21fa126a6>;
+        rel="xet-auth", <https://cas-server.xethub.hf.co/v1/reconstructions/13f3904acb34b995f6e172c3d90c538461c093c1735aba72cd5ad0b4a653fd03>;
+        rel="xet-reconstruction-info"
+      x-cache: Miss from cloudfront
+      via: 1.1 2a987a3d847a1e0cd03c9a85cc4ad240.cloudfront.net (CloudFront)
+      x-amz-cf-pop: DEL51-P7
+      x-amz-cf-id: 356AsPl2xIV3xe2k8sEMbfyzLMnryhcZEJ6haRFnEDAHUKBcmvowrw==
+      strict-transport-security: max-age=31536000
+    body:
+      string: ''
+  recorded_at: 2026-08-26 16:28:50
+recorded_with: VCR-vcr/2.1.0

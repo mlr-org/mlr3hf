@@ -163,6 +163,32 @@ test_that("backend_hfhub errors when primary_key column cannot be coerced to int
 
   expect_error(
     backend_hfhub(csv.path, primary_key = "id"),
-    "Primary key column 'id' (class: character) cannot be safely coerced to integer (values too large or non-whole). mlr3 requires an integer primary key."
-  ,fixed = TRUE)
+    "Primary key column 'id' (class: character) cannot be safely coerced to integer (values too large or non-whole). mlr3 requires an integer primary key.",
+    fixed = TRUE
+  )
+})
+
+test_that("backend_hfhub reads gzipped csv", {
+  vcr::use_cassette("backend_hfhub_csv_gz", {
+    path <- cache_hfhub(
+      repo_id = "a4n9i/iris-tabular",
+      file_name = "small_test.csv.gz"
+    )
+
+    backend <- backend_hfhub(path)
+
+    data <- backend$data(
+      rows = 1:5,
+      cols = backend$colnames
+    )
+  })
+  expect_equal(
+    data$name,
+    c("Alice", "Bob", "Charlie", "Diana", "Evan")
+  )
+  expect_equal(data$age, c(23, 25, 22, 24, 21))
+  expect_equal(
+    data$score,
+    c(88.5, 91.0, 79.5, 95.0, 84.0)
+  )
 })

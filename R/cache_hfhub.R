@@ -74,6 +74,10 @@ cache_hfhub <- function(
             return(pointer_path)
         }
     }
+    url <- NULL
+    commit_hash <- NULL
+    etag <- NULL
+    expected_size <- NULL
     if (!local_files_only) {
         url <- hub_url(repo_id, file_name, revision = revision)
         metadata <- get_file_metadata(url)
@@ -87,6 +91,9 @@ cache_hfhub <- function(
             cli::cli_abort(gettext(
                 "Distant resource does not seem to be on huggingface.co (missing commit header)."
             ))
+        }
+        if (!grepl("^[0-9a-f]{40}$", commit_hash)) {
+            stop("Invalid commit hash retrieved from server: ", commit_hash)
         }
         etag <- metadata$etag
         if (is.null(etag)) {
@@ -107,7 +114,8 @@ cache_hfhub <- function(
         if (grepl("^[0-9a-f]{40}$", revision)) {
             commit_hash <- revision
         } else {
-            ref_path <- fs::path(storage_folder, "refs", revision)
+            safe_revision <- gsub("/", "_", revision, fixed = TRUE)
+            ref_path <- fs::path(storage_folder, "refs", safe_revision)
             if (fs::file_exists(ref_path)) {
                 commit_hash <- readLines(ref_path)
             }
@@ -163,9 +171,9 @@ cache_hfhub <- function(
         fs::path_dir(snapshot_path),
         recurse = TRUE
     )
-
+    safe_revision <- gsub("/", "_", revision, fixed = TRUE)
     if (revision != commit_hash) {
-        ref_path <- fs::path(storage_folder, "refs", revision)
+        ref_path <- fs::path(storage_folder, "refs", safe_revision)
         fs::dir_create(fs::path_dir(ref_path))
         fs::file_create(ref_path)
         writeLines(commit_hash, ref_path)

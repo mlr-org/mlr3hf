@@ -25,12 +25,10 @@
 #' @param ... Additional arguments, reserved for future use.
 #'
 #' @return A named \code{list} with one entry per cached split. Each
-#'   entry is itself a list containing:
-#'   \describe{
-#'     \item{split}{Character string giving the split name.}
-#'     \item{path}{Character string giving the local file path where
-#'       the cached Parquet file was saved.}
-#'   }
+#'   entry is a character vector of local file paths to the cached
+#'   Parquet shard(s) for that split (a single path if the split has
+#'   one shard, multiple paths if it was sharded across several
+#'   files).
 #'
 #' @details
 #' Files are downloaded from the
@@ -57,9 +55,9 @@
 #' @export
 cache_parquet <- function(
     repo_id,
-    revision = "refs%2Fconvert%2Fparquet",
     config,
     split = NULL,
+    revision = "refs%2Fconvert%2Fparquet",
     ...
 ) {
     cache_dir <- mlr3hf_cache_dir()
@@ -81,14 +79,13 @@ cache_parquet <- function(
         dataset = as.character(data$parquet_files$dataset),
         config = as.character(data$parquet_files$config),
         split = as.character(data$parquet_files$split),
-        #url = as.character(data$parquet_files$url),
+        url = as.character(data$parquet_files$url),
         filename = as.character(data$parquet_files$filename),
         size = as.numeric(data$parquet_files$size),
         stringsAsFactors = FALSE
     )
 
     filtered_files <- parquet_files[parquet_files$config == config, ]
-    b_url <- mlr3hf_hub_url()
 
     if (nrow(filtered_files) == 0) {
         cli::cli_abort(
@@ -113,13 +110,14 @@ cache_parquet <- function(
         filename <- filtered_files$filename[i]
         expected_size <- filtered_files$size[i]
 
-        url <- glue::glue(
-            "{b_url}/datasets/{repo_id}/resolve/{revision}/{config}/{curr_split}/{filename}"
-        )
+        url <- filtered_files$url[i]
 
         metadata <- get_file_metadata(url)
         etag <- metadata$etag
         commit_hash <- metadata$commit_hash
+        if (!grepl("^[0-9a-f]{40}$", commit_hash)) {
+            stop("Invalid commit hash retrieved from server: ", commit_hash)
+        }
         error_code <- metadata$error_code
 
         if (!is.null(error_code)) {

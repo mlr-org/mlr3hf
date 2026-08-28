@@ -6,9 +6,9 @@
 \usage{
 cache_parquet(
   repo_id,
-  revision = "refs\%2Fconvert\%2Fparquet",
   config,
   split = NULL,
+  revision = "refs\%2Fconvert\%2Fparquet",
   ...
 )
 }
@@ -16,11 +16,6 @@ cache_parquet(
 \item{repo_id}{Character string. The repository ID of the dataset on
 the Hugging Face Hub, in the form \code{"user_id/repo_name"}
 (e.g. \code{"fancyzhx/amazon_polarity"}).}
-
-\item{revision}{Character string. A specific commit hash to pin the
-download to, instead of using the latest revision of the
-\code{refs/convert/parquet} branch. Defaults to \code{NULL}, which
-resolves to the most recent commit.}
 
 \item{config}{Character string. The dataset configuration name. Many
 datasets expose only one configuration, in which case
@@ -33,16 +28,19 @@ the available configuration folders.}
 \code{NULL} (default), all available splits for the given
 configuration are cached.}
 
+\item{revision}{Character string. A specific commit hash to pin the
+download to, instead of using the latest revision of the
+\code{refs/convert/parquet} branch. Defaults to \code{NULL}, which
+resolves to the most recent commit.}
+
 \item{...}{Additional arguments, reserved for future use.}
 }
 \value{
 A named \code{list} with one entry per cached split. Each
-entry is itself a list containing:
-\describe{
-\item{split}{Character string giving the split name.}
-\item{path}{Character string giving the local file path where
-the cached Parquet file was saved.}
-}
+entry is a character vector of local file paths to the cached
+Parquet shard(s) for that split (a single path if the split has
+one shard, multiple paths if it was sharded across several
+files).
 }
 \description{
 Downloads and caches the Parquet files for a dataset hosted on the
