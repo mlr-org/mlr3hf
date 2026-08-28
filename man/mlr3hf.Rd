@@ -45,7 +45,9 @@ converting them to mlr3 tasks, and working with large datasets.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://anjaninandan001.github.io/mlr3hf/}
+  \item \url{https://mlr-org.github.io/mlr3hf/}
+  \item \url{https://github.com/mlr-org/mlr3hf}
+  \item Report bugs at \url{https://github.com/mlr-org/mlr3hf/issues}
 }
 
 }
